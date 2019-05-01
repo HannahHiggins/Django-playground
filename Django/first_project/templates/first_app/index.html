@@ -4,10 +4,32 @@
     <head>
         <meta charset="'utf-8">
         <title>Django Page</title>
-        <link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <h1>Franco is here!</h1>
-        <img src="{% static "images/Franco.jpg" %}" alt="Broken">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Hello and Welcome</h1>
+                <h2>Here are the Access Records</h2>
+            </div>
+        </div>
+        <div class="djangotwo">
+            {% if access_records %}
+                <table>
+                    <thead>
+                        <th>Site Name</th>
+                        <th>Date Accessed</th>
+                    </thead>
+                    {% for acc in access_records %}
+                    <tr>
+                        <td>{{ acc.name }}</td>
+                        <td>{{ acc.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                    <p>NO RECORDS</p>
+                {% endif %}
+        </div>
     </body>
 </html>
